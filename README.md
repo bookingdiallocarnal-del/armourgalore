@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armour Galore | Fashion Brand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+        }
+        
+        /* Header */
+        .header {
+            background: #0a0a0a;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .logo span {
+            color: silver;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1558769132-cb1a40ed0ada?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        
+        .btn {
+            background: #d4af37;
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #d4af37;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .add-to-cart:hover {
+            background: #d4af37;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">Armour<span>Galore</span></div>
+        <div>
+            <a href="#products" class="btn" style="background: #333; color: white; padding: 10px 20px;">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>ARMOUR GALORE</h1>
+            <p>Protection meets Style. Premium armored fashion for the modern warrior.</p>
+            <a href="#products" class="btn">VIEW COLLECTION</a>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="products-section" id="products">
+        <h2 class="section-title">OUR PRODUCTS</h2>
+        
+        <div class="products-grid" id="productsContainer">
+            <!-- Products will appear here automatically -->
+        </div>
+    </div>
+
+    <script>
+        // YOUR PRODUCTS LIST - EDIT THIS PART!
+        const products = [
+            {
+                name: "Titanium Mesh Vest",
+                price: "$1,250",
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1636&q=80",
+                description: "Lightweight titanium mesh with carbon fiber lining"
+            },
+            {
+                name: "Gold-Plated Armor Jacket",
+                price: "$2,800",
+                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+                description: "24K gold-plated armor plates on premium leather"
+            },
+            {
+                name: "Stealth Tactical Helmet",
+                price: "$950",
+                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+                description: "Carbon fiber helmet with integrated AR display"
+            },
+            {
+                name: "Combat Boots",
+                price: "$650",
+                image: "https://images.unsplash.com/photo-1551537482-f2075a1d41f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+                description: "Steel-toe boots with ballistic fiber protection"
+            },
+            {
+                name: "Carbon Fiber Gauntlets",
+                price: "$450",
+                image: "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1652&q=80",
+                description: "Protective gloves with carbon fiber knuckle guards"
+            },
+            {
+                name: "Tactical Vest",
+                price: "$1,100",
+                image: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80",
+                description: "Discreet urban wear with concealed armor panels"
+            }
+        ];
+
+        // Function to display products
+        function displayProducts() {
+            const container = document.getElementById('productsContainer');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <p>${product.description}</p>
+                        <button class="add-to-cart" onclick="addToCart('${product.name}')">ADD TO CART</button>
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+        }
+
+        // Simple add to cart function
+        function addToCart(productName) {
+            alert(`Added ${productName} to cart!`);
+            // In a real website, this would save to shopping cart
+        }
+
+        // Display products when page loads
+        displayProducts();
+    </script>
+</body>
+</html>

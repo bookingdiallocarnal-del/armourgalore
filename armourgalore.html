@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armour Galore | Armored Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-text: #f5f5f5;
+            --dark-text: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background-color: var(--primary-dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-silver);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-dark);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-silver);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 30px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1558769132-cb1a40ed0ada?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-silver);
+        }
+        
+        /* Collections */
+        .section-title {
+            text-align: center;
+            margin: 5rem 0 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 5rem;
+        }
+        
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            border-radius: 4px;
+        }
+        
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .collection-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .collection-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(10, 10, 10, 0.9));
+        }
+        
+        .collection-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Featured Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 5rem;
+        }
+        
+        .product-card {
+            background-color: var(--secondary-dark);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: var(--secondary-dark);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #444;
+            background-color: var(--secondary-dark);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-dark);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .mobile-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+            }
+            
+            .mobile-menu ul li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-menu ul li a {
+                color: var(--light-text);
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid #333;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Armour<span>Galore</span></a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon">
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                <span class="cart-count">2</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Armored Elegance for the Modern Warrior</h1>
+            <p>Discover our exclusive collection of armored fashion where protection meets style. Crafted with precision and designed for those who command attention.</p>
+            <a href="#collections" class="btn">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Collections</h2>
+            </div>
+            
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Stealth Collection">
+                    <div class="collection-info">
+                        <h3>Stealth Collection</h3>
+                        <p>Black titanium-infused apparel</p>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Gilded Line">
+                    <div class="collection-info">
+                        <h3>Gilded Line</h3>
+                        <p>Gold-plated protective wear</p>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Future Guard">
+                    <div class="collection-info">
+                        <h3>Future Guard</h3>
+                        <p>Smart armored clothing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Titanium Vest">
+                    </div>
+                    <div class="product-info">
+                        <h3>Titanium Mesh Vest</h3>
+                        <p class="product-price">$1,250</p>
+                        <p>Lightweight titanium mesh with carbon fiber lining.</p>
+                        <a href="#" class="btn btn-outline">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Gold-Plated Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gold-Plated Armor Jacket</h3>
+                        <p class="product-price">$2,800</p>
+                        <p>24K gold-plated armor plates on premium leather.</p>
+                        <a href="#" class="btn btn-outline">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Stealth Helmet">
+                    </div>
+                    <div class="product-info">
+                        <h3>Stealth Tactical Helmet</h3>
+                        <p class="product-price">$950</p>
+                        <p>Carbon fiber helmet with integrated AR display.</p>
+                        <a href="#" class="btn btn-outline">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1551537482-f2075a1d41f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Armored Boots">
+                    </div>
+                    <div class="product-info">
+                        <h3>Reinforced Combat Boots</h3>
+                        <p class="product-price">$650</p>
+                        <p>Steel-toe boots with ballistic fiber protection.</p>
+                        <a href="#" class="btn btn-outline">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>The Armour Galore Philosophy</h2>
+                <p>Founded in 2015, Armour Galore redefines protective wear by merging cutting-edge materials with avant-garde design. Our pieces are crafted for individuals who refuse to compromise between safety and style.</p>
+                <p>Each garment undergoes 200+ hours<!-- Replace the entire "Featured Products" section (lines 350-430 approximately) with this: -->
+
+<!-- Featured Products -->
+<section id="products">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+        </div>
+        
+        <div class="products-grid" id="products-container">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+        
+        <!-- Product Categories Filter -->
+        <div class="categories-filter">
+            <button class="filter-btn active" data-filter="all">All Products</button>
+            <button class="filter-btn" data-filter="vests">Vests</button>
+            <button class="filter-btn" data-filter="jackets">Jackets</button>
+            <button class="filter-btn" data-filter="helmets">Headgear</button>
+            <button class="filter-btn" data-filter="footwear">Footwear</button>
+            <button class="filter-btn" data-filter="accessories">Accessories</button>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS after the existing .products-grid styles (around line 235) -->
+<style>
+    .categories-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 3rem;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        background-color: var(--secondary-dark);
+        color: var(--light-text);
+        border: 1px solid #444;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+        background-color: var(--accent-gold);
+        color: var(--primary-dark);
+        border-color: var(--accent-gold);
+    }
+    
+    .product-category {
+        font-size: 12px;
+        color: var(--accent-silver);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+</style>
+
+<!-- Add this JavaScript after the existing script (at the end of the file) -->
+<script>
+    // Product Database - Easy to update!
+    const products = [
+        {
+            id: 1,
+            name: "Titanium Mesh Vest",
+            price: 1250,
+            category: "vests",
+            description: "Lightweight titanium mesh with carbon fiber lining. Level II protection.",
+            image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1636&q=80",
+            featured: true
+        },
+        {
+            id: 2,
+            name: "Gold-Plated Armor Jacket",
+            price: 2800,
+            category: "jackets",
+            description: "24K gold-plated armor plates on premium leather. Statement piece.",
+            image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+            featured: true
+        },
+        {
+            id: 3,
+            name: "Stealth Tactical Helmet",
+            price: 950,
+            category: "helmets",
+            description: "Carbon fiber helmet with integrated AR display. Modular design.",
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+            featured: true
+        },
+        {
+            id: 4,
+            name: "Reinforced Combat Boots",
+            price: 650,
+            category: "footwear",
+            description: "Steel-toe boots with ballistic fiber protection. Waterproof.",
+            image: "https://images.unsplash.com/photo-1551537482-f2075a1d41f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80",
+            featured: true
+        },
+        {
+            id: 5,
+            name: "Carbon Fiber Gauntlets",
+            price: 450,
+            category: "accessories",
+            description: "Protective gloves with carbon fiber knuckle guards. Touchscreen compatible.",
+            image: "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1652&q=80",
+            featured: true
+        },
+        {
+            id: 6,
+            name: "Urban Tactical Vest",
+            price: 1100,
+            category: "vests",
+            description: "Discreet urban wear with concealed armor panels.",
+            image: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80",
+            featured: false
+        },
+        {
+            id: 7,
+            name: "Executive Armor Blazer",
+            price: 2200,
+            category: "jackets",
+            description: "Boardroom-ready blazer with hidden Kevlar lining.",
+            image: "https://images.unsplash.com/photo-1593030108885-6f2a4c8f6d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80",
+            featured: false
+        },
+        {
+            id: 8,
+            name: "Night Vision Goggles",
+            price: 3200,
+            category: "accessories",
+            description: "Military-grade night vision with stylish frame.",
+            image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80",
+            featured: false
+        }
+    ];
+
+    // Function to display products
+    function displayProducts(filter = 'all') {
+        const container = document.getElementById('products-container');
+        container.innerHTML = '';
+        
+        let filteredProducts = products;
+        if (filter !== 'all') {
+            filteredProducts = products.filter(product => product.category === filter);
+        }
+        
+        // Show featured products first, then others
+        const sortedProducts = filteredProducts.sort((a, b) => b.featured - a.featured);
+        
+        sortedProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.setAttribute('data-category', product.category);
+            
+            productCard.innerHTML = `
+                <div class="product-img">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">${product.category.toUpperCase()}</span>
+                    <h3>${product.name}</h3>
+                    <p class="product-price">$${product.price.toLocaleString()}</p>
+                    <p>${product.description}</p>
+                    <a href="#" class="btn btn-outline add-to-cart" data-id="${product.id}">Add to Cart</a>
+                </div>
+            `;
+            
+            container.appendChild(productCard);
+        });
+        
+        // Reattach event listeners to new Add to Cart buttons
+        attachCartEvents();
+    }
+
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        displayProducts();
+        
+        // Filter button event listeners
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter products
+                const filter = this.getAttribute('data-filter');
+                displayProducts(filter);
+            });
+        });
+    });
+
+    // Function to reattach cart events after products are loaded
+    function attachCartEvents() {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productId = parseInt(this.getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                
+                if (product) {
+                    addToCart(product);
+                }
+            });
+        });
+    }
+
+    // Enhanced add to cart function
+    function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('armourgalore_cart')) || [];
+        
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.id === product.id);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1
+            });
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('armourgalore_cart', JSON.stringify(cart));
+        
+        // Update cart count
+        updateCartCount();
+        
+        // Show confirmation
+        showCartNotification(product.name);
+    }
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('armourgalore_cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = totalItems;
+    }
+
+    function showCartNotification(productName) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'cart-notification';
+        notification.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>${productName} added to cart!</span>
+        `;
+        
+        // Add styles for notification
+        if (!document.querySelector('#notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                .cart-notification {
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: var(--secondary-dark);
+                    border-left: 4px solid var(--accent-gold);
+                    padding: 15px 20px;
+                    border-radius: 2px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                }
+                
+                .cart-notification i {
+                    color: var(--accent-gold);
+                    font-size: 20px;
+                }
+                
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Initialize cart count on page load
+    updateCartCount();
+</script> of craftsmanship, utilizing 
